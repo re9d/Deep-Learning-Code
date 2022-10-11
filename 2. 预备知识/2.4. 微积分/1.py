@@ -42,7 +42,6 @@ def plot(X, Y=None, xlabel=None, ylabel=None, legend=None, xlim=None,
     """绘制数据点"""
     if legend is None:
         legend = []
-    print("绘制数据点")
     set_figsize(figsize)
     axes = axes if axes else d2l.plt.gca()
 
@@ -51,7 +50,6 @@ def plot(X, Y=None, xlabel=None, ylabel=None, legend=None, xlim=None,
         return (hasattr(X, "ndim") and X.ndim == 1 or isinstance(X, list)
                 and not hasattr(X[0], "__len__"))
 
-    print("如果X有一个轴，输出True")
     if has_one_axis(X):
         X = [X]
     if Y is None:
@@ -61,14 +59,12 @@ def plot(X, Y=None, xlabel=None, ylabel=None, legend=None, xlim=None,
     if len(X) != len(Y):
         X = X * len(Y)
     axes.cla()
-    print("绘制图像")
     for x, y, fmt in zip(X, Y, fmts):
         if len(x):
             axes.plot(x, y, fmt)
         else:
             axes.plot(y, fmt)
     set_axes(axes, xlabel, ylabel, xlim, ylim, xscale, yscale, legend)
-    print("显示图像")
     plt.show()
 
 def f(x):
